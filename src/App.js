@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import {
+  BrowserRouter as Router,
+  useLocation
+} from "react-router-dom";
+import LoomOembed from './views/loomOembed';
 
-function App() {
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
+function QueryParams() {
+  const query = useQuery();
+  const shareCode = query.get("shareCode");
+
+  if (!shareCode) {
+    return (
+      <p>ERROR: Not set query param "shareCode"</p>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LoomOembed 
+      shareCode={shareCode}
+    />
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <QueryParams />
+    </Router>
+  );
+};
