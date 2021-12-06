@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { isSupported } from "@loomhq/loom-sdk";
 import { oembed } from "@loomhq/loom-embed";
 
@@ -25,6 +25,9 @@ export default function LoomOembed(props) {
     });
 
     return (
-        <div dangerouslySetInnerHTML={{ __html: videoHTML }}></div>
+        <>
+            test {sharedUrl}
+            <div dangerouslySetInnerHTML={{ __html: videoHTML }}></div>
+        </>
     );
 };
