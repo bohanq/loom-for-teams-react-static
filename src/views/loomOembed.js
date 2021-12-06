@@ -3,7 +3,7 @@ import { isSupported } from "@loomhq/loom-sdk";
 import { oembed } from "@loomhq/loom-embed";
 
 export default function LoomOembed(props) {
-    const sharedUrl = `https://www.loom.com/share/${props.shareCode}`;
+    const { sharedUrl } = props;
     const [ videoHTML, setVideoHTML ] = useState("");
 
     useEffect(() => {

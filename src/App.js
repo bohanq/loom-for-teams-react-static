@@ -14,17 +14,17 @@ function useQuery() {
 
 function QueryParams() {
   const query = useQuery();
-  const shareCode = query.get("shareCode");
+  const sharedUrl = query.get("sharedUrl");
 
-  if (!shareCode) {
+  if (!sharedUrl) {
     return (
-      <p>ERROR: Not set query param "shareCode"</p>
+      <p>ERROR: Not set query param "sharedUrl"</p>
     )
   }
 
   return (
     <LoomOembed 
-      shareCode={shareCode}
+      sharedUrl={sharedUrl}
     />
   );
 }
